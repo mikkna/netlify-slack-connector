@@ -1,0 +1,1 @@
+run `yarn netlify deploy --prod --dir=.` to deploy
