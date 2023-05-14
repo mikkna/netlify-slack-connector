@@ -7,9 +7,19 @@ const handler: Handler = async (event: HandlerEvent) => {
   let text: string;
   try {
     const body = JSON.parse(event.body as string);
-    text = `${body.url} is ${body.state} ${body.error_message || ''}`;
+    text = `${body.url} is ${body.state}.`;
+    if (body.manual_deploy) {
+      text += '\nManual deploy.'
+    } else {
+      if (body.commit_url && body.title) {
+        text += `\nCommit: <${body.commit_url}|${body.title}>.`
+      }
+    }
+    if (body.error_message) {
+      text += `\n${body.error_message}`
+    }
   } catch(e) {
-    text = 'Unknown event';
+    text = '❌ Unknown event.';
   }
   
   try {
