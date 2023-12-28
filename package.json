@@ -8,5 +8,9 @@
   },
   "devDependencies": {
     "netlify-cli": "^15.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikkna/netlify-slack-connector"
   }
 }
